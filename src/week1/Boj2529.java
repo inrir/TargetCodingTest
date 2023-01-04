@@ -42,7 +42,6 @@ public class Boj2529 {
          */
 
 
-
     }
     static boolean isThat(char op1, char op2, String operator){ // 피연산자1, 피연산자2, 연산자
             if(operator.equals(">"))
@@ -52,7 +51,7 @@ public class Boj2529 {
             return false;
     }
 
-    static void solution(int index, String result) {
+    static void solution(int index, String result) { // 지속적으로 확인하고 탐색 반복진행
         if (index == count + 1) { // end
             answer.add(result);
             return;
