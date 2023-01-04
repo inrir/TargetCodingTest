@@ -11,7 +11,7 @@ import java.io.InputStreamReader;
  *
  * 출력: 최소의 형성 안되는 것
  */
-public class Main {
+public class Boj14225 {
 
     static int count;
     static int[] nums;
