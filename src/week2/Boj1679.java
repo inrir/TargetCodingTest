@@ -54,7 +54,7 @@ public class Boj1679 {
             }
             if(search*2 <= 100000 && check[search*2] == 0){
                 check[search*2] = check[search];
-                queue.add(search*2)
+                queue.add(search*2);
             }
 
         }
