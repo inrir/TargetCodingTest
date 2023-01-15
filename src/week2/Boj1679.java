@@ -45,13 +45,16 @@ public class Boj1679 {
                 return check[search] - 1; // level - 1: current location
             }
             if(search-1 >= 0 && check[search-1] == 0){
-
+                check[search-1] = check[search];
+                queue.add(search-1);
             }
             if(search+1 <= 100000 && check[search+1] == 0){
-
+                check[search+1] = check[search];
+                queue.add(search+1);
             }
             if(search*2 <= 100000 && check[search*2] == 0){
-
+                check[search*2] = check[search];
+                queue.add(search*2)
             }
 
         }
