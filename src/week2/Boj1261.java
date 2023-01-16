@@ -82,16 +82,16 @@ public class Boj1261 {
                 dx = p.x + rangeX[i];
                 dy = p.y + rangeY[i];
 
-                if (dx < 1 || dy < 1 || dx > N || dy > M) {
+                if (dx < 1 || dy < 1 || dx > N || dy > M) { // 초과여부 확인
                     continue;
                 }
 
-                if (!visit[dx][dy] && map[dx][dy] == 0) {
+                if (!visit[dx][dy] && map[dx][dy] == 0) { // 안 부술지?
                     visit[dx][dy] = true;
                     q.offer(new Point(dx, dy, p.cnt));
                 }
 
-                if (!visit[dx][dy] && map[dx][dy] == 1) {
+                if (!visit[dx][dy] && map[dx][dy] == 1) { // 부술지?
                     visit[dx][dy] = true;
                     q.offer(new Point(dx, dy, p.cnt + 1));
                 }
