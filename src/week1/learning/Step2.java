@@ -5,6 +5,16 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 
+/**
+ * 프로그래머스 가장 큰 수
+ *
+ * input: 정수로 값을 내기에는 크기가 너무 크다.
+ *
+ * output:
+ *
+ * algo: 정수 -> 문자 -> 내림차순 -> 조합
+ */
+
 public class Step2 {
 
     static class Solution {
