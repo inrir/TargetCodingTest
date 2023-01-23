@@ -24,49 +24,29 @@ public class Step3 {
     public static int solution(int[] budgets, int M) { // [120, 110, 140, 150], 485 => 127
         int answer = 0;
 
-
-        int length = budgets.length;
-        int avg = 0;
-        int min = Integer.MAX_VALUE;
-        int max = -1;
+        int min = 0;
+        int max = 0;
 
         for(int a: budgets){
-            avg += a;
-            if(min > a) min = a;
             if(max < a) max = a;
         }
-        avg /= length; // 평균 완성
-        int check = 0;
+        while(min <= max){
+            int mid = (min + max) / 2;
+            int sum = 0;
 
-
-        // 1st. 최소: 0, 최대: 150
-        while(true){
-            check = 0;
-            for(int i = 0; i<length; i++){
-                if(avg < budgets[i]){ // 상한액 도달시 상한액으로 연산
-                    check += avg;
-                }else{
-                    check += budgets[i];
-                }
+            for(int b: budgets){
+                if(b > mid) sum += mid; // 상한액 초과시
+                else sum+=b;
             }
 
-            if(check == M || answer == check)
-                break;
-            if(check > M ){ // 상한액과 최소와 비교
-                max = avg;
-                avg = avg + min;
-                avg /= 2;
-                answer = check;
-            }
-            if(check < M){ // 최대와 상한액 비교
-                min = avg;
-                avg = max + avg;
-                avg /= 2;
-                answer = check;
+            if(sum <= M){
+                min = mid + 1;
+                answer = mid;
+            }else{
+                max = mid - 1;
             }
         }
 
-        answer = avg;
         return answer;
     }
 
