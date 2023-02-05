@@ -19,6 +19,9 @@ import java.util.StringTokenizer;
  *
  * 1번 -> N번으로 향하는 과정에서 최소의 값을 갖도록 하는 것이 관건이다. 계속 값이 최소인 방향으로 더해주는 방법이다.
  *
+ * RGB => 012 0에서 최소인 경우, 1에서 최소인 경우, 2에서 최소인 경우
+ * 출력시 0,1,2에서 최소인 경우로 출력한다.
+ *
  */
 public class Boj1149 {
     static Integer[][] dp;
@@ -47,9 +50,9 @@ public class Boj1149 {
         if(dp[N][number] == null){
             dp[N][0] = Math.min(recur(N-1, 1), recur(N-1, 2)) + arr[N][0];
 
-            dp[N][1] = Math.min(recur(N-1, 0), recur(N-1, 2)) + arr[N][2];
+            dp[N][1] = Math.min(recur(N-1, 0), recur(N-1, 2)) + arr[N][1];
 
-            dp[N][2] = Math.min(recur(N-1, 0), recur(N-1, 1)) + arr[N][1];
+            dp[N][2] = Math.min(recur(N-1, 0), recur(N-1, 1)) + arr[N][2];
 
         }
 
