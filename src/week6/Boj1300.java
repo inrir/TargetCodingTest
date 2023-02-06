@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import static java.lang.System.exit;
+
 /**
  * Boj 1300 k번째 수
  *
@@ -40,15 +42,28 @@ public class Boj1300 {
         int index_B = 0;
         while(index != N){
             B[index_B] = A[index][index];
+            if(index_B == K-1){
+                System.out.println(B[K-1]);
+                break;
+            }
             index_B++;
+
             for(int i = 1; (index+i) < N; i++){
                 B[index_B] = A[index + i][index];
+                if(index_B == K-1){
+                    System.out.println(B[K-1]);
+                    exit(0);
+
+                }
                 index_B++;
                 B[index_B] = A[index][index + i];
+                if(index_B == K-1){
+                    System.out.println(B[K-1]);
+                    exit(0);
+                }
                 index_B++;
             }
             index++;
         }
-        System.out.println(B[K-1]);
     }
 }
