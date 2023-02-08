@@ -47,4 +47,31 @@ public class Boj1920 {
             }
         }
     }
+
+    // 만약에 이분 탐색으로 가능하다면
+
+    /**
+     *
+     * @param arr 주어진 배열
+     * @param key 배열에서 찾아야 하는 키값
+     * @return key에 대한 인덱스 or -1(없음)
+     */
+    static int BinarySearch(int[] arr, int key){
+        int left = 0;
+        int right = arr.length - 1;
+
+        while(left <= right){ // left가 커지면 끝
+            int mid = (left + right) / 2; // 중간 값 찾기
+
+            if(key < arr[mid]) { // 왼쪽으로 이동
+                right = mid - 1;
+            }else if(key > arr[mid]){ // 오른쪽으로 이동
+                left = mid + 1;
+            }else{ // find it
+                return mid;
+            }
+        }
+        return -1; // no find
+
+    }
 }
