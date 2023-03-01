@@ -1,54 +1,74 @@
 package Programmers;
 
-import java.util.HashMap;
+import java.util.*;
 
 public class LikeMBTI {
-    public static void main(String[] args) {
+    class Solution {
+        public String solution(String[] survey, int[] choices) {
+            String answer = "";
+            HashMap<String, Integer> hashMap = new HashMap<>();
 
-    }
-    public String solution(String[] survey, int[] choices) {
-        char[] type = {'R','T','C','F','J','M','A','N'};
-        //타입별로 번호 매기기
-        HashMap<Character,Integer> index = new HashMap<>();
-        int score[] = new int[8];
-        //배열 index 순서대로 초기화
-        for(int i=0; i<8; i++)
-            index.put(type[i],i);
+            hashMap.put("R", 0);
+            hashMap.put("T", 0);
+            hashMap.put("C", 0);
+            hashMap.put("F", 0);
+            hashMap.put("J", 0);
+            hashMap.put("M", 0);
+            hashMap.put("A", 0);
+            hashMap.put("N", 0);
 
-        for(int i=0; i<survey.length; i++){
-            //String 값을 char 배열로 전환
-            //char[0]은 앞의 알파벳, char[1]은 뒤의 알파벳
-            char[] arr=survey[i].toCharArray();
-            switch (choices[i]){
-                case 1 : score[index.get(arr[0])]+=3;
-                    break;
-                case 2 : score[index.get(arr[0])]+=2;
-                    break;
-                case 3 : score[index.get(arr[0])]+=1;
-                    break;
-                case 4 : break;
-                case 5 : score[index.get(arr[1])]+=1;
-                    break;
-                case 6 : score[index.get(arr[1])]+=2;
-                    break;
-                case 7 : score[index.get(arr[1])]+=3;
-                    break;
-                default : break;
+            for(int i = 0; i < survey.length; i++){
+                String first = survey[i].substring(0,1);
+                String second = survey[i].substring(1);
+                switch(choices[i]){
+                    case 1:
+                        hashMap.put(first, hashMap.get(first) + 3);
+                        break;
+                    case 2:
+                        hashMap.put(first, hashMap.get(first) + 2);
+                        break;
+                    case 3:
+                        hashMap.put(first, hashMap.get(first) + 1);
+                        break;
+                    case 4: // nothing
+                        break;
+                    case 5:
+                        hashMap.put(second, hashMap.get(second) + 1);
+                        break;
+                    case 6:
+                        hashMap.put(second, hashMap.get(second) + 2);
+                        break;
+                    case 7:
+                        hashMap.put(second, hashMap.get(second) + 3);
+                        break;
+                    default:
+                        break;
+                }
             }
-        }
-        String answer = "";
-        for(int i=0; i<8; i+=2){
-            if(score[i]>score[i+1])
-                answer+=type[i];
-            else if(score[i]==score[i+1]){
-                if(type[i]<type[i+1])
-                    answer+=type[i];
-                else
-                    answer+=type[i+1];
+
+            if(hashMap.get("R") >= hashMap.get("T")){
+                answer += "R";
+            }else{
+                answer += "T";
             }
-            else
-                answer+=type[i+1];
+
+            if(hashMap.get("C") >= hashMap.get("F")){
+                answer += "C";
+            }else{
+                answer += "F";
+            }
+            if(hashMap.get("J") >= hashMap.get("M")){
+                answer += "J";
+            }else{
+                answer += "M";
+            }
+            if(hashMap.get("A") >= hashMap.get("N")){
+                answer += "A";
+            }else{
+                answer += "N";
+            }
+
+            return answer;
         }
-        return answer;
     }
 }
