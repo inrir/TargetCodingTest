@@ -3,7 +3,7 @@ package Programmers;
 import java.util.*;
 
 public class LikeMBTI {
-    class Solution {
+    class Solution { // 성격유형 검사하기
         public String solution(String[] survey, int[] choices) {
             String answer = "";
             HashMap<String, Integer> hashMap = new HashMap<>();
