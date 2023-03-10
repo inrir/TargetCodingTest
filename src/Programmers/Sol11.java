@@ -30,16 +30,16 @@ public class Sol11 {
             return answer;
         }
 
-        public boolean isPrime(Long num){
-            if(num <= 1){
+        public boolean isPrime(Long num) {
+            if (num <= 1) {
                 return false;
             }
-            for(int i = 2; i<=Math.sqrt(num); i++){ // 49 반례로 등호를 넣는다.
-                if(num % i == 0){
+            for (int i = 2; i <= Math.sqrt(num); i++) { // 49 반례로 등호를 넣는다.
+                if (num % i == 0) {
                     return false;
                 }
             }
             return true;
-        }기
+        }
     }
 }
