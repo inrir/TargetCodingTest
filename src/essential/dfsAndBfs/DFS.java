@@ -1,7 +1,11 @@
 package essential.dfsAndBfs;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.StringTokenizer;
 
 /**
  * DFS => deep -> recursion or repeat.
@@ -16,19 +20,21 @@ public class DFS {
     static boolean[] DFS_visited;
     static boolean[] BFS_visited;
     static int N;
-    public static void main(String[] args) {
-        // test
-        N = 4;
-        int M = 5;
-        int V = 1;
+    public static void main(String[] args) throws IOException {
 
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        String[] input = bf.readLine().split(" ");
+        N = Integer.parseInt(input[0]);
+        int M = Integer.parseInt(input[1]);
+        int V = Integer.parseInt(input[2]);
 
         map = new int[N+1][N+1];
-        map[1][2] = 1;
-        map[1][3] = 1;
-        map[1][4] = 1;
-        map[2][4] = 1;
-        map[3][4] = 1;
+
+        for(int i = 0; i < M; i++){
+            StringTokenizer st = new StringTokenizer(bf.readLine());
+            map[Integer.parseInt(st.nextToken())][Integer.parseInt(st.nextToken())] = 1;
+        }
+
         DFS_visited = new boolean[N+1];
         BFS_visited = new boolean[N+1];
 
