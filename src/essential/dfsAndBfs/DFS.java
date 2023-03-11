@@ -32,7 +32,12 @@ public class DFS {
 
         for(int i = 0; i < M; i++){
             StringTokenizer st = new StringTokenizer(bf.readLine());
-            map[Integer.parseInt(st.nextToken())][Integer.parseInt(st.nextToken())] = 1;
+            int a = Integer.parseInt(st.nextToken());
+            int b = Integer.parseInt(st.nextToken());
+            // 양쪽 관계임을 보여줘야 한다. -> 첫번째 틀린 이유
+            map[a][b] = 1;
+            map[b][a] = 1;
+
         }
 
         DFS_visited = new boolean[N+1];
