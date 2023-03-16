@@ -1,4 +1,4 @@
-package Programmers;
+package Programmers.sol0319;
 
 public class Sol15 {
     public class Solution {
