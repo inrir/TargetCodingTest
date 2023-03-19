@@ -3,57 +3,56 @@ package Programmers.sol0319;
 import java.util.*;
 public class Sol17 {
 // [3차] 압축
+
     class Solution {
-        public int solution(String str1, String str2) {
-        /*
-        자카드 유사도 집합 A, B => 공집합일 경우, J(A, B) = 1 : 합집합 == 0 => 1
-        두 글자씩 자르는데, 오직 영문자만 유효하다. => 다른 것을 거르기보단 영문자만 챙기기.
-        대소문자 구분 없음 => 대문자로 통일.
-        */
-            // 모두 담아주고, 동일하게 겹치는 교집합 부분은 하나만 취급해주기.
-            double answer;
-            List<String> list1 = new ArrayList<>(); // str1 담는 통
-            List<String> list2 = new ArrayList<>(); // str2 담는 통
+        public int[] solution(String msg) {
+            ArrayList<Integer> array = new ArrayList<>();
+            HashMap<String, Integer> hashMap = new HashMap<>();
+            // 1. 길이가 1인 모든 단어를 포함하도록 사전을 초기화한다.
+            // 처음 A-Z까지 초기화 시킴.
+            char ch = 'A';
+            for(int i = 1; i<27; i++){
+                hashMap.put(ch+"", i);
+                ch++;
+            }
+            int index = 27;
 
-            String str = str1.toUpperCase(); // 대문자로 변경
-            int len = str.length();
+            // 2. 사전에 내용을 넣으면서 가장 긴 문자열을 탐색하도록 한다.
+            boolean endPoint = false;
+            for(int i = 0; i < msg.length(); i++){
+                String word = msg.charAt(i) + "";
 
-            for(int i = 0; i < len; i++){ // 영문자 조각들만 담아주기
-                if(i+1 < len && str.charAt(i) >= 'A' && str.charAt(i) <= 'Z' && str.charAt(i+1) >= 'A' && str.charAt(i+1) <= 'Z'){
-                    list1.add(str.substring(i,i+2));
+                while(hashMap.containsKey(word)){ // 끝에 도달한 경우
+                    i++;
+                    if(i == msg.length()){
+                        endPoint = true;
+                        break;
+                    }
+                    word += msg.charAt(i);
                 }
-            }
-
-            str = str2.toUpperCase();
-            len = str.length();
-            for(int i = 0; i < len; i++){ // 영문자 조각들만 담아주기
-                if(i+1 < len && str.charAt(i) >= 'A' && str.charAt(i) <= 'Z' && str.charAt(i+1) >= 'A' && str.charAt(i+1) <= 'Z'){
-                    list2.add(str.substring(i,i+2));
+                if(endPoint){
+                    array.add(hashMap.get(word));
+                    break;
                 }
+
+                // 현재 word에는 지금 사전에 넣을 단어이므로 뒤에서 문자 하나를 제거해야 사전에 넣을 수 있다.
+
+                array.add(hashMap.get(word.substring(0, word.length() - 1)));
+                // 지속적으로 나온 값을 넣는 것
+                hashMap.put(word, index++);
+                // 단어를 만들면서 다음 문자를 가리키고 있기에 -1 해준다.
+                i--;
+
             }
 
-            int union = 0; // 합집합
-            int inter = 0; // 교집합
 
-            for(String tmp : list1){
-                if(list2.remove(tmp)){
-                    inter++;
-                }
-                union++;
+            int[] answer = new int[array.size()];
+
+            for(int i = 0; i < array.size(); i++){
+                answer[i] = array.get(i);
             }
 
-            for(String tmp : list2){
-                union++;
-            }
-
-            if(union == 0){ // 모두 공집합인 경우이면 자카드 유사도는 1이다.
-                answer = 1;
-            }else{
-                answer = (double) inter / (double) union;
-            }
-
-            return (int) (answer * 65536);
-
+            return answer;
         }
     }
 }
