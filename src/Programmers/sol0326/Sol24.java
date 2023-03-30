@@ -2,7 +2,7 @@ package Programmers.sol0326;
 
 import java.util.*;
 public class Sol24 {
-    class Solution {
+//    class Solution {
         static char map[][];
 
         public int solution(int m, int n, String[] board) {
@@ -64,7 +64,7 @@ public class Sol24 {
             return false;
 
         }
-    }
+//    }
 /**
  * 전형적인 구현문제...
 
