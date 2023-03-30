@@ -1,6 +1,6 @@
 import java.util.*;
 class Solution {
-    static HashMap<String, Integer> hashmap; // 단품의 조합을 만든다.
+    static HashMap<String, Integer> hashmap; // 단품의 조합을 만든다..
         // static int[] arr; // 가진 n개의 배열
         static HashMap<Integer, Integer> maxmap; // 2: max = 길이 : 최고 숫자
         static String[] result; // 추출된 r개를 말한다.
