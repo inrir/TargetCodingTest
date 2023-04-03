@@ -4,7 +4,7 @@ class Solution {
     static List<String> OperatorList;
     static StringBuilder tmp; 
     static Long max = 0L;
-    static String express;
+    static String express; // expression 담아주는 통
 
     public long solution(String expression) {
         // long answer = 0;
@@ -14,7 +14,7 @@ class Solution {
         
         return max;
     }
-    public void permutation(int start, int end, String[] operator, boolean[] check, String result){
+    public void permutation(int start, int end, String[] operator, boolean[] check, String result){ // 순열 함수
         if(start == end){
             calc(result);
         }
@@ -36,7 +36,7 @@ class Solution {
         OprandList = new ArrayList<>();
         OperatorList = new ArrayList<>();
         
-        for(int i = 0; i < express.length(); i++){
+        for(int i = 0; i < express.length(); i++){ // 문자와 숫자 분리
             if(express.charAt(i) == '+' || express.charAt(i) == '-' || express.charAt(i) == '*'){
                 OprandList.add(Long.parseLong(tmp.toString()));
                 tmp = new StringBuilder();
@@ -49,7 +49,7 @@ class Solution {
         OprandList.add(Long.parseLong(tmp.toString()));
         
         
-        for(int i = 0; i < operator.length(); i++){
+        for(int i = 0; i < operator.length(); i++){ // 분리된 형식으로 계싼
             String tmp = String.valueOf(operator.charAt(i));
             
             while(OperatorList.size() != 0){
