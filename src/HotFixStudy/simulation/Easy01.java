@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class easy01 {
+public class Easy01 {
     /**
      * 백준 10808 알파벳 개수
      * 브론즈 4
