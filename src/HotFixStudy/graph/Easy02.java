@@ -11,14 +11,14 @@ public class Easy02 {
      * 1인 것에 대해서 BFS? 탐색
      * 하고 카운트 하고 출력?
      */
-    static int point;
-    static int[][] map;
-    static boolean[][] find;
-    static Queue<Integer> queue;
+    static int point; // 가로 세로의 각각의 길이
+    static int[][] map; // 움직인 경로를 넣어주기
+    static boolean[][] find; // 탐색한 여부 알려주기.
+    // 인접 행렬 움직이는 경로를 적기 위해서 dx dy
     static int[] dx = {-1, 1, 0, 0};
     static int[] dy = {0, 0, -1, 1};
 
-    static class pos{ // 움직임
+    static class pos{ // 2차원 상의 움직임
         int x;
         int y;
         pos(int x, int y){
@@ -28,7 +28,7 @@ public class Easy02 {
     }
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-        point = Integer.parseInt(bf.readLine()); // 7
+        point = Integer.parseInt(bf.readLine()); // 정점의 개수
         map = new int[point][point];
         find = new boolean[point][point]; // 지났는지 확인해주는 역할.
         for(int i = 0; i < point; i++){
@@ -50,7 +50,7 @@ public class Easy02 {
         }
 
         System.out.println(count);
-        Collections.sort(list);
+        Collections.sort(list); // 리스트 정렬법 + 오름차순으로 정렬해야하기 때문에 필수
         for(int i = 0; i < count; i++){
             System.out.println(list.get(i));
         }
