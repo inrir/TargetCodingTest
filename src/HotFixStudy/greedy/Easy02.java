@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
 public class Easy02 {
     /**
      * 백준 17298 오큰수
-     * NGE를 배열을 보고 출력해야 한다.
+     * NGE를 배열을 보고 출력해야 한다.해
      */
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
