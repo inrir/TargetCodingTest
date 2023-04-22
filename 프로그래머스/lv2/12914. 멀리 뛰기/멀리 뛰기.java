@@ -10,8 +10,7 @@ class Solution {
         dp[1] = 1;
         if(n == 1) return dp[n];
         
-        dp[2] = 2;
-        if(n == 2) return dp[n];
+        dp[2] = 2; // 2칸을 2칸 + (1칸 + 1칸) 이라고 볼 수 있다.
         for(int i = 3; i <= n; i++){
             dp[i] = (dp[i - 1] + dp[i - 2]) % 1234567;
         }
