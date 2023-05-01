@@ -16,7 +16,7 @@ class Solution {
 //             }
 //         }
         
-        // 다시..
+        // 다시.. stack O(N^2) 대비 O(N)의 효과가 있다.
         Stack<Integer> stack = new Stack<>();
         for(int i = 0; i < len; i++){
             while(!stack.isEmpty() && prices[i] < prices[stack.peek()]){
