@@ -1,21 +1,25 @@
 class Solution {
-    int answer;
+    int answer = 0;
     public int solution(int[] numbers, int target) {
-        // 부호를 변동하여 target을 맞출 수 있는 경우를 정하자.
-        answer = 0;
-        DFS(numbers, 0, target, 0);
+        //DFS로 +,- 경우 모두 탐색해주기
         
+        DFS(target, numbers, 0, 0);
         return answer;
     }
     
-    public void DFS(int[] numbers, int depth, int target, int sum){
-        if(depth == numbers.length){ // 깊이가 도달했을 때
-            if(sum == target) answer++;
-            return; // end sign
+    public void DFS(int target, int[] numbers, int count, int sum){
+        // count == numbers.length 일 경우 return
+        if(count == numbers.length){
+            // target == sum 경우 충족 answer++;
+            if(target == sum){
+                answer++;
+            }
+            return;
         }
         
-        DFS(numbers, depth+1, target, sum + numbers[depth]);
-        DFS(numbers, depth+1, target, sum - numbers[depth]);
+        DFS(target, numbers, count + 1, sum + numbers[count]);
+        DFS(target, numbers, count + 1, sum - numbers[count]);
         
     }
+        
 }
