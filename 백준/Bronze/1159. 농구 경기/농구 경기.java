@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Main {
+
     /**
      * 백준 1159 농구경기
      * 알파벳 카운팅 후, 5이상인 값을 출력 "" 경우 PREDAJA
